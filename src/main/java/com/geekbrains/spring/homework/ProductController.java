@@ -49,37 +49,4 @@ public class ProductController {
 
     // --------------------------------------------------------------
 
-
-    // ДЗ 1
-
-    // 1. Обработать запрос вида: GET /products/filtered?min_price=100
-    // В результате должен вернуться список товаров, цена которых >= 100
-    // GET http://localhost:8080/products/filtered?min_price=100
-    @GetMapping("/filtered")
-    @ResponseBody
-    public List<Product> filterByMinPrice(@RequestParam Integer min_price) {
-        return productRepository.filterByMinPrice(min_price);
-    }
-
-    // 2. Обработать запрос вида: GET /products/delete/1
-    // В результате должен удалиться товар с соответствющим id
-    // GET http://localhost:8080/products/delete/{id}
-    @GetMapping("/delete/{id}")
-    @ResponseBody
-    public void deleteById(@PathVariable(name = "id") Long id) {
-        if(productRepository.findById(id).isPresent()) productRepository.deleteById(id);
-    }
-
-    // 3. * Попробуйте реализовать возможность изменения названия товара по id
-    // Что-то вроде: /products/{id}/change_title...
-    // POST http://localhost:8080/products/{id}/change_title?title=new_title
-    // Через POST не вышло, сделал через GET
-    @GetMapping("/{id}/change_title")
-    public void changeTitle(@PathVariable Long id, @RequestParam(name = "title") String new_title) {
-        if(productRepository.findById(id).isPresent()) {
-            Product p = productRepository.findById(id).get();
-            p.setTitle(new_title);
-            productRepository.save(p);
-        }
-    }
 }
