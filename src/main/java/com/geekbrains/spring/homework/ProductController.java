@@ -72,8 +72,7 @@ public class ProductController {
     // 3. * Попробуйте реализовать возможность изменения названия товара по id
     // Что-то вроде: /products/{id}/change_title...
     // POST http://localhost:8080/products/{id}/change_title?title=new_title
-    // Через POST не вышло, сделал через GET
-    @GetMapping("/{id}/change_title")
+    @PostMapping("/{id}/change_title")
     public void changeTitle(@PathVariable Long id, @RequestParam(name = "title") String new_title) {
         if(productRepository.findById(id).isPresent()) {
             Product p = productRepository.findById(id).get();
