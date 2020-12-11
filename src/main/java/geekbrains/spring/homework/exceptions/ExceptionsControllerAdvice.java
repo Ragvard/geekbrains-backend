@@ -12,5 +12,11 @@ public class ExceptionsControllerAdvice {
         MarketError marketError = new MarketError(HttpStatus.NOT_FOUND.value(), e.getMessage());
         return new ResponseEntity<>(marketError, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler
+    public ResponseEntity<?> handleBookNotFoundException(BookNotFoundException e) {
+        LibraryError libraryError = new LibraryError(HttpStatus.NOT_FOUND.value(), e.getMessage());
+        return new ResponseEntity<>(libraryError, HttpStatus.NOT_FOUND);
+    }
 }
 

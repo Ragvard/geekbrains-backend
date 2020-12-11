@@ -8,6 +8,8 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+
+// 5. * Попробуйте прикрутить swagger и описать ваш rest сервис - просто изменил пакет с вебинарского на дз
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -15,8 +17,8 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("ru.geekbrains.mini.market.controllers"))
-                .paths(PathSelectors.regex("/api.*"))
+                .apis(RequestHandlerSelectors.basePackage("geekbrains.spring.homework.controllers"))
+                .paths(PathSelectors.regex("/library.*"))
                 .build();
     }
 }
